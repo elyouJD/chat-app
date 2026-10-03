@@ -35,6 +35,8 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
 
 RUN chown -R www-data:www-data /var/www/html/var /var/www/html/public
 
+RUN touch /var/www/html/.env
+
 EXPOSE 80
 
 CMD ["apache2-foreground"]
