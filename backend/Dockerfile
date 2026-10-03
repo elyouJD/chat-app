@@ -29,8 +29,9 @@ RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' \
     /etc/apache2/sites-available/000-default.conf \
     /etc/apache2/apache2.conf \
     /etc/apache2/sites-enabled/000-default.conf
-
-RUN chown -R www-data:www-data /var/www/html/var
+    
+RUN mkdir -p /var/www/html/var /var/www/html/public/uploads \
+    && chown -R www-data:www-data /var/www/html/var /var/www/html/public/uploads
 
 EXPOSE 80
 
