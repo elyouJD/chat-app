@@ -21,6 +21,9 @@ WORKDIR /var/www/html
 
 COPY . .
 
+# Symfony needs the .env file to exist
+RUN touch .env
+
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
 
 RUN mkdir -p var/cache var/log public/uploads
