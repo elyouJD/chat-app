@@ -1,0 +1,130 @@
+<div class="home">
+  <!-- NAVBAR -->
+  <app-navbar></app-navbar>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="circle circle-left"></div>
+    <div class="circle circle-right"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>♥</span>
+        Faites de nouvelles rencontres
+      </div>
+
+      <h1>
+        Découvrez des personnes
+        <span>qui vous correspondent</span>
+      </h1>
+
+      <p>Faites connaissance, discutez et créez de nouvelles connexions.</p>
+    </div>
+  </section>
+
+  <!-- ================= PEOPLE ================= -->
+
+  <section class="people-section">
+    <div class="section-header">
+      <div>
+        <h2>
+          <span class="section-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="9" cy="8" r="3"></circle>
+
+              <circle cx="17" cy="9" r="2.5"></circle>
+
+              <path d="M3 20c0-4 2.5-6 6-6s6 2 6 6"></path>
+
+              <path d="M15 14c3 0 5 2 5 5"></path>
+            </svg>
+          </span>
+
+          Personnes
+        </h2>
+
+        <p class="section-subtitle">Découvrez les personnes disponibles pour discuter</p>
+      </div>
+    </div>
+
+    <!-- ================= USERS ================= -->
+
+    <div class="users">
+      @for (user of users; track user.id) {
+        <article class="user-card">
+          <!-- PHOTO -->
+
+          <div class="photo-container">
+            @if (user.photo) {
+              <img
+                [src]="'http://127.0.0.1:8000' + user.photo"
+                [alt]="user.username"
+                class="user-photo"
+              />
+            } @else {
+              <div class="avatar">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="8" r="4"></circle>
+
+                  <path d="M4 21c0-4.5 3.5-7 8-7s8 2.5 8 7"></path>
+                </svg>
+              </div>
+            }
+
+            <span class="online"></span>
+          </div>
+
+          <!-- NAME -->
+
+          <h3>
+            {{ user.username }}
+          </h3>
+
+          <!-- INFO -->
+
+          <div class="user-info">
+            <span>
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"></circle>
+
+                <path d="M12 7v5l3 2"></path>
+              </svg>
+
+              {{ user.age }} ans
+            </span>
+
+            <span>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"></path>
+
+                <circle cx="12" cy="9" r="2.5"></circle>
+              </svg>
+
+              {{ user.city }}
+            </span>
+          </div>
+
+          <!-- DESCRIPTION -->
+
+          <div class="description">
+            {{ user.description || 'Hola, me gusta conocer gente.' }}
+          </div>
+
+          <!-- CHAT -->
+
+          <button type="button" class="chat-button" [routerLink]="['/chat', user.id]">
+            <span class="chat-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 5h16v11H8l-4 4V5z"></path>
+              </svg>
+            </span>
+
+            <span> Commencer la conversation </span>
+
+            <span class="arrow"> → </span>
+          </button>
+        </article>
+      }
+    </div>
+  </section>
+</div>

@@ -1,0 +1,742 @@
+/* =========================
+   GLOBAL
+========================= */
+
+.home {
+  min-height: 100vh;
+  background: #f8f7ff;
+  color: #25145c;
+  padding-bottom: 70px;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  position: relative;
+
+  width: calc(100% - 80px);
+  max-width: 1350px;
+
+  margin: 50px auto 0;
+
+  min-height: 230px;
+
+  border-radius: 30px;
+
+  overflow: hidden;
+
+  background: linear-gradient(110deg, #dfd0ff, #f7e9ff, #ffd9e9);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  box-sizing: border-box;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 850px;
+
+  padding: 35px;
+  box-sizing: border-box;
+}
+
+/* =========================
+   HERO BADGE
+========================= */
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 15px;
+  margin-bottom: 15px;
+
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.65);
+
+  color: #6d28d9;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.hero-badge span {
+  color: #e83e8c;
+}
+
+/* =========================
+   HERO TITLE
+========================= */
+
+.hero h1 {
+  margin: 0;
+
+  font-size: 43px;
+  line-height: 1.15;
+
+  font-weight: 800;
+
+  color: #321472;
+}
+
+.hero h1 span {
+  display: block;
+  color: #e83e8c;
+}
+
+/* =========================
+   HERO TEXT
+========================= */
+
+.hero p {
+  margin: 18px 0 0;
+
+  font-size: 18px;
+
+  color: #66518f;
+}
+
+/* =========================
+   DECORATIVE CIRCLES
+========================= */
+
+.circle {
+  position: absolute;
+
+  border-radius: 50%;
+
+  opacity: 0.35;
+
+  pointer-events: none;
+}
+
+.circle-left {
+  width: 190px;
+  height: 190px;
+
+  left: -55px;
+  bottom: -85px;
+
+  background: #b89aff;
+}
+
+.circle-right {
+  width: 190px;
+  height: 190px;
+
+  right: -45px;
+  top: -85px;
+
+  background: #ffacd1;
+}
+
+/* =========================
+   PEOPLE SECTION
+========================= */
+
+.people-section {
+  width: calc(100% - 80px);
+  max-width: 1350px;
+
+  margin: 50px auto;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   SECTION HEADER
+========================= */
+
+.section-header {
+  margin-bottom: 28px;
+}
+
+.section-header h2 {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin: 0;
+
+  font-size: 32px;
+
+  color: #321472;
+}
+
+.section-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #eee5ff;
+
+  color: #6d28d9;
+
+  flex-shrink: 0;
+}
+
+.section-icon svg {
+  width: 24px;
+  height: 24px;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.8;
+
+  stroke-linecap: round;
+}
+
+.section-subtitle {
+  margin: 8px 0 0 55px;
+
+  color: #81759b;
+
+  font-size: 14px;
+}
+
+/* =========================
+   USERS GRID
+========================= */
+
+.users {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+  gap: 28px;
+}
+
+/* =========================
+   USER CARD
+========================= */
+
+.user-card {
+  min-width: 0;
+
+  background: white;
+
+  border-radius: 25px;
+
+  padding: 25px;
+
+  box-sizing: border-box;
+
+  box-shadow: 0 10px 30px rgba(71, 39, 130, 0.09);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  overflow: hidden;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 18px 40px rgba(71, 39, 130, 0.15);
+}
+
+/* =========================
+   PHOTO
+========================= */
+
+.photo-container {
+  position: relative;
+
+  width: 160px;
+  height: 160px;
+
+  margin: 0 auto 20px;
+}
+
+.user-photo,
+.avatar {
+  width: 160px;
+  height: 160px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f0eaff;
+
+  color: #6d28d9;
+}
+
+.avatar svg {
+  width: 75px;
+  height: 75px;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.4;
+
+  stroke-linecap: round;
+}
+
+/* =========================
+   ONLINE
+========================= */
+
+.online {
+  position: absolute;
+
+  width: 16px;
+  height: 16px;
+
+  right: 5px;
+  bottom: 10px;
+
+  background: #20c866;
+
+  border: 3px solid white;
+
+  border-radius: 50%;
+}
+
+/* =========================
+   NAME
+========================= */
+
+.user-card h3 {
+  margin: 5px 0 15px;
+
+  font-size: 25px;
+
+  color: #29105f;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+/* =========================
+   USER INFO
+========================= */
+
+.user-info {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 12px 20px;
+
+  margin-bottom: 18px;
+
+  font-size: 14px;
+
+  color: #62577c;
+}
+
+.user-info span {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  min-width: 0;
+}
+
+.user-info svg {
+  width: 17px;
+  height: 17px;
+
+  flex-shrink: 0;
+
+  fill: none;
+
+  stroke: #7c3aed;
+
+  stroke-width: 1.8;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.description {
+  min-height: 55px;
+
+  padding: 15px;
+  margin-bottom: 15px;
+
+  box-sizing: border-box;
+
+  border-radius: 13px;
+
+  background: #f7f4fc;
+
+  color: #55496e;
+
+  line-height: 1.5;
+
+  font-size: 14px;
+
+  overflow-wrap: anywhere;
+}
+
+/* =========================
+   CHAT BUTTON
+========================= */
+
+.chat-button {
+  width: 100%;
+
+  min-height: 48px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  padding: 14px 16px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  background: linear-gradient(90deg, #7928e8, #8d2ee9);
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.chat-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(121, 40, 232, 0.3);
+}
+
+.chat-icon {
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.chat-icon svg {
+  width: 19px;
+  height: 19px;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.8;
+
+  stroke-linejoin: round;
+}
+
+.chat-button span:nth-child(2) {
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.arrow {
+  margin-left: auto;
+
+  font-size: 23px;
+
+  line-height: 15px;
+
+  flex-shrink: 0;
+}
+
+/* =========================
+   TABLET
+   601px - 1024px
+========================= */
+
+@media (max-width: 1024px) {
+  .hero {
+    width: calc(100% - 50px);
+
+    margin-top: 35px;
+  }
+
+  .people-section {
+    width: calc(100% - 50px);
+
+    margin-top: 40px;
+  }
+
+  .hero h1 {
+    font-size: 37px;
+  }
+
+  .hero p {
+    font-size: 17px;
+  }
+
+  .users {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+  }
+
+  .user-card {
+    padding: 22px;
+  }
+}
+
+/* =========================
+   MOBILE
+   401px - 600px
+========================= */
+
+@media (max-width: 600px) {
+  .home {
+    padding-bottom: 40px;
+  }
+
+  .hero {
+    width: calc(100% - 30px);
+
+    margin: 25px auto 0;
+
+    min-height: 220px;
+
+    border-radius: 22px;
+  }
+
+  .hero-content {
+    padding: 25px 18px;
+  }
+
+  .hero-badge {
+    font-size: 12px;
+
+    padding: 7px 12px;
+  }
+
+  .hero h1 {
+    font-size: 29px;
+
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    margin-top: 14px;
+  }
+
+  .circle-left,
+  .circle-right {
+    width: 130px;
+    height: 130px;
+  }
+
+  .people-section {
+    width: calc(100% - 30px);
+
+    margin: 35px auto;
+  }
+
+  .section-header {
+    margin-bottom: 22px;
+  }
+
+  .section-header h2 {
+    font-size: 26px;
+
+    gap: 10px;
+  }
+
+  .section-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .section-icon svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .section-subtitle {
+    margin: 8px 0 0;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+  }
+
+  .users {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .user-card {
+    width: 100%;
+
+    padding: 22px;
+
+    border-radius: 20px;
+  }
+
+  .user-card h3 {
+    font-size: 22px;
+  }
+
+  .photo-container,
+  .user-photo,
+  .avatar {
+    width: 140px;
+    height: 140px;
+  }
+
+  .avatar svg {
+    width: 65px;
+    height: 65px;
+  }
+
+  .online {
+    width: 14px;
+    height: 14px;
+
+    right: 3px;
+    bottom: 8px;
+
+    border-width: 3px;
+  }
+
+  .user-info {
+    gap: 10px 15px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .chat-button {
+    padding: 13px 12px;
+
+    font-size: 13px;
+  }
+}
+
+/* =========================
+   VERY SMALL MOBILE
+   400px أو أقل
+========================= */
+
+@media (max-width: 400px) {
+  .hero {
+    width: calc(100% - 20px);
+
+    margin-top: 20px;
+
+    min-height: 210px;
+  }
+
+  .hero-content {
+    padding: 22px 12px;
+  }
+
+  .hero h1 {
+    font-size: 25px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .hero-badge {
+    font-size: 11px;
+  }
+
+  .people-section {
+    width: calc(100% - 20px);
+
+    margin-top: 30px;
+  }
+
+  .section-header h2 {
+    font-size: 23px;
+  }
+
+  .section-subtitle {
+    font-size: 12px;
+  }
+
+  .user-card {
+    padding: 18px;
+
+    border-radius: 18px;
+  }
+
+  .photo-container,
+  .user-photo,
+  .avatar {
+    width: 125px;
+    height: 125px;
+  }
+
+  .user-card h3 {
+    font-size: 20px;
+  }
+
+  .chat-button {
+    font-size: 12px;
+
+    padding: 12px 10px;
+  }
+}

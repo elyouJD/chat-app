@@ -1,0 +1,123 @@
+<app-navbar></app-navbar>
+<div class="profile-container">
+  <div class="profile-card">
+    @if (!editing) {
+      <!-- ========================= -->
+      <!-- MODE AFFICHAGE -->
+      <!-- ========================= -->
+
+      <div class="profile-photo">
+        @if (photoUrl) {
+          <img [src]="photoUrl" alt="Photo de profil" />
+        } @else {
+          <div class="avatar">👤</div>
+        }
+      </div>
+
+      <h1>{{ user?.username }}</h1>
+
+      <p class="age">{{ user?.age }} ans</p>
+
+      <p>📍 {{ user?.city }}</p>
+
+      <p>👤 {{ user?.gender }}</p>
+
+      @if (user?.description) {
+        <div class="description">
+          {{ user.description }}
+        </div>
+      }
+
+      <button type="button" (click)="editProfile()">Modifier mon profil</button>
+    } @else {
+      <!-- ========================= -->
+      <!-- MODE MODIFICATION -->
+      <!-- ========================= -->
+
+      <h1>Modifier mon profil</h1>
+
+      <!-- PHOTO -->
+
+      <div class="profile-photo">
+        @if (photoUrl) {
+          <img [src]="photoUrl" alt="Photo de profil" />
+        } @else {
+          <div class="avatar">👤</div>
+        }
+      </div>
+
+      <div class="photo-section">
+        <label for="photo"> Choisir une photo </label>
+
+        <input id="photo" type="file" accept="image/*" (change)="onPhotoSelected($event)" />
+
+        @if (selectedPhoto) {
+          <p class="selected-photo">
+            {{ selectedPhoto.name }}
+          </p>
+
+          <button type="button" class="upload-button" (click)="uploadSelectedPhoto()">
+            Envoyer la photo
+          </button>
+        }
+      </div>
+
+      <!-- USERNAME -->
+
+      <div class="form-group">
+        <label for="username"> Nom d'utilisateur </label>
+
+        <input id="username" type="text" [(ngModel)]="user.username" name="username" />
+      </div>
+
+      <!-- AGE -->
+
+      <div class="form-group">
+        <label for="age"> Âge </label>
+
+        <input id="age" type="number" [(ngModel)]="user.age" name="age" />
+      </div>
+
+      <!-- CITY -->
+
+      <div class="form-group">
+        <label for="city"> Ville </label>
+
+        <input id="city" type="text" [(ngModel)]="user.city" name="city" />
+      </div>
+
+      <!-- GENDER -->
+
+      <div class="form-group">
+        <label for="gender"> Genre </label>
+
+        <select id="gender" [(ngModel)]="user.gender" name="gender">
+          <option value="hombre">Homme</option>
+
+          <option value="mujer">Femme</option>
+        </select>
+      </div>
+
+      <!-- DESCRIPTION -->
+
+      <div class="form-group">
+        <label for="description"> Description </label>
+
+        <textarea
+          id="description"
+          [(ngModel)]="user.description"
+          name="description"
+          rows="5"
+        ></textarea>
+      </div>
+
+      <!-- BUTTONS -->
+
+      <div class="buttons">
+        <button type="button" class="save-button" (click)="saveProfile()">Enregistrer</button>
+
+        <button type="button" class="cancel-button" (click)="cancelEdit()">Annuler</button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,210 @@
+<app-navbar></app-navbar>
+
+<div class="chat-page">
+  <div class="chat-container">
+    <!-- ==========================================
+         HEADER USER
+         ========================================== -->
+
+    <div class="chat-header">
+      <div class="chat-user">
+        <!-- PHOTO -->
+
+        <div class="chat-avatar">
+          @if (otherPhoto) {
+            <img [src]="otherPhoto" [alt]="otherUsername" />
+          } @else {
+            <span>👤</span>
+          }
+        </div>
+
+        <!-- NOM -->
+
+        <div class="chat-user-info">
+          <h2>
+            {{ otherUsername }}
+          </h2>
+
+          <span class="online-status">
+            <span class="status-dot"></span>
+
+            En ligne
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         MESSAGES
+         ========================================== -->
+
+    <div class="messages" #messagesContainer>
+      @for (message of messages; track message.id) {
+        <div
+          class="message-row"
+          [class.my-message]="isMyMessage(message)"
+          [class.other-message]="!isMyMessage(message)"
+          (contextmenu)="openContextMenu($event, message)"
+        >
+          <div class="message">
+            <!-- IMAGE -->
+
+            @if (message.type === 'image' && message.mediaUrl) {
+              <img
+                class="chat-image"
+                [src]="getMediaUrl(message.mediaUrl)"
+                alt="Image"
+                loading="lazy"
+              />
+            }
+
+            <!-- VIDEO -->
+
+            @else if (message.type === 'video' && message.mediaUrl) {
+              <video
+                class="chat-video"
+                [src]="getMediaUrl(message.mediaUrl)"
+                controls
+                preload="metadata"
+              ></video>
+            }
+
+            <!-- TEXT -->
+
+            @else {
+              <div class="message-content">
+                {{ message.content }}
+              </div>
+            }
+
+            <!-- TIME -->
+
+            <small>
+              {{ formatTime(message.createdAt) }}
+            </small>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- ==========================================
+         CONTEXT MENU
+         ========================================== -->
+
+    @if (contextMenuVisible && selectedMessage) {
+      <div
+        class="message-context-menu"
+        [style.left.px]="contextMenuX"
+        [style.top.px]="contextMenuY"
+        (click)="$event.stopPropagation()"
+      >
+        <!-- COPIER -->
+
+        <button type="button" (click)="copySelectedMessage()">
+          <span>📋</span>
+
+          <span>Copier</span>
+        </button>
+
+        <!-- ENVOYER -->
+
+        <button type="button" (click)="sendSelectedMessage()">
+          <span>↗️</span>
+
+          <span>Envoyer</span>
+        </button>
+
+        <!-- SUPPRIMER -->
+
+        @if (isMyMessage(selectedMessage)) {
+          <button type="button" class="delete-context-item" (click)="deleteSelectedMessage()">
+            <span>🗑️</span>
+
+            <span>Supprimer</span>
+          </button>
+        }
+      </div>
+    }
+
+    <!-- ==========================================
+         EMOJI
+         ========================================== -->
+
+    @if (showEmojiPicker) {
+      <div class="emoji-picker">
+        @for (emoji of emojis; track emoji) {
+          <button type="button" class="emoji-button" (click)="addEmoji(emoji)">
+            {{ emoji }}
+          </button>
+        }
+      </div>
+    }
+
+    <!-- ==========================================
+         FORM
+         ========================================== -->
+
+    <form class="message-form" (ngSubmit)="sendMessage()">
+      <!-- EMOJI -->
+
+      <button
+        type="button"
+        class="media-button"
+        (click)="toggleEmojiPicker()"
+        [disabled]="uploadingFile"
+        title="Emoji"
+      >
+        😀
+      </button>
+
+      <!-- IMAGE -->
+
+      <button
+        type="button"
+        class="media-button"
+        (click)="imageInput.click()"
+        [disabled]="uploadingFile"
+        title="Image"
+      >
+        📷
+      </button>
+
+      <input #imageInput type="file" hidden accept="image/*" (change)="selectImage($event)" />
+
+      <!-- VIDEO -->
+
+      <button
+        type="button"
+        class="media-button"
+        (click)="videoInput.click()"
+        [disabled]="uploadingFile"
+        title="Vidéo"
+      >
+        🎥
+      </button>
+
+      <input #videoInput type="file" hidden accept="video/*" (change)="selectVideo($event)" />
+
+      <!-- INPUT -->
+
+      <input
+        type="text"
+        name="message"
+        [(ngModel)]="newMessage"
+        placeholder="Écrire un message..."
+        autocomplete="off"
+        [disabled]="uploadingFile"
+      />
+
+      <!-- SEND -->
+
+      <button type="submit" [disabled]="!newMessage.trim() || uploadingFile">
+        @if (uploadingFile) {
+          Envoi...
+        } @else {
+          Envoyer
+        }
+      </button>
+    </form>
+  </div>
+</div>

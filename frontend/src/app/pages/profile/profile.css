@@ -1,0 +1,325 @@
+.profile-container {
+  min-height: 100vh;
+  padding: 60px 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  background:
+    radial-gradient(circle at 10% 10%, #e9dcff 0, transparent 28%),
+    radial-gradient(circle at 90% 90%, #ffd9ed 0, transparent 28%),
+    linear-gradient(135deg, #faf7ff, #fff8fc);
+}
+
+/* CARD */
+
+.profile-card {
+  width: 100%;
+  max-width: 520px;
+
+  padding: 40px;
+
+  box-sizing: border-box;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 20px 60px rgba(91, 45, 145, 0.12),
+    0 5px 20px rgba(0, 0, 0, 0.05);
+
+  text-align: center;
+
+  backdrop-filter: blur(10px);
+}
+
+/* PHOTO */
+
+.profile-photo {
+  margin-bottom: 22px;
+}
+
+.profile-photo img,
+.avatar {
+  width: 130px;
+  height: 130px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  margin: auto;
+
+  border: 5px solid white;
+
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.18);
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f0e8ff;
+
+  font-size: 55px;
+}
+
+/* NAME */
+
+.profile-card h1 {
+  margin: 10px 0;
+
+  font-size: 30px;
+
+  color: #32156b;
+
+  font-weight: 700;
+}
+
+/* INFO */
+
+.age {
+  color: #777;
+  margin-bottom: 18px;
+}
+
+.profile-card > p {
+  color: #4f4263;
+  margin: 12px 0;
+
+  font-size: 16px;
+}
+
+/* DESCRIPTION */
+
+.description {
+  margin: 25px 0;
+
+  padding: 18px;
+
+  background: #f7f3fc;
+
+  border-radius: 15px;
+
+  color: #4b3c60;
+
+  text-align: left;
+
+  line-height: 1.6;
+}
+
+/* MAIN BUTTON */
+
+.profile-card > button {
+  width: 100%;
+
+  margin-top: 10px;
+
+  padding: 15px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  background: linear-gradient(90deg, #7c3aed, #e638a5);
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
+
+  transition: 0.2s;
+}
+
+.profile-card > button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 12px 25px rgba(124, 58, 237, 0.32);
+}
+
+/* ========================= */
+/* EDIT PROFILE */
+/* ========================= */
+
+.edit-card {
+  text-align: left;
+}
+
+.edit-card h1 {
+  text-align: center;
+
+  margin-bottom: 8px;
+}
+
+.edit-subtitle {
+  text-align: center;
+
+  color: #8a7d99;
+
+  margin-bottom: 30px;
+}
+
+/* FORM */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #443650;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 14px 15px;
+
+  border: 1px solid #e4dff0;
+
+  border-radius: 12px;
+
+  background: #fcfaff;
+
+  color: #34263f;
+
+  font-size: 15px;
+
+  outline: none;
+
+  transition: 0.2s;
+}
+
+.form-group textarea {
+  resize: vertical;
+
+  min-height: 110px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #8b5cf6;
+
+  background: white;
+
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.08);
+}
+
+/* BUTTONS */
+
+.edit-buttons {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 25px;
+}
+
+.save-button,
+.cancel-button {
+  flex: 1;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.save-button {
+  background: linear-gradient(90deg, #7c3aed, #e638a5);
+
+  color: white;
+
+  box-shadow: 0 8px 18px rgba(124, 58, 237, 0.2);
+}
+
+.save-button:hover {
+  transform: translateY(-2px);
+}
+
+.cancel-button {
+  background: #f0edf3;
+
+  color: #5c5363;
+}
+
+.cancel-button:hover {
+  background: #e7e2ea;
+}
+
+/* MESSAGES */
+
+.error-message,
+.success-message {
+  padding: 12px;
+
+  border-radius: 10px;
+
+  margin-bottom: 15px;
+
+  font-size: 14px;
+}
+
+.error-message {
+  background: #fff0f0;
+
+  color: #c62828;
+}
+
+.success-message {
+  background: #edfff4;
+
+  color: #168044;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .profile-container {
+    padding: 25px 15px;
+  }
+
+  .profile-card {
+    padding: 25px 20px;
+
+    border-radius: 22px;
+  }
+
+  .profile-card h1 {
+    font-size: 26px;
+  }
+
+  .edit-buttons {
+    flex-direction: column;
+  }
+}

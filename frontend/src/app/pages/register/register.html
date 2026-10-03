@@ -1,0 +1,161 @@
+<div class="register-page">
+  <div class="bg-circle bg-circle-1"></div>
+  <div class="bg-circle bg-circle-2"></div>
+
+  <div class="register-card">
+    <!-- LOGO -->
+
+    <div class="logo">
+      <span class="logo-icon">♥</span>
+      <span>Ta3arof</span>
+    </div>
+
+    <!-- HEADER -->
+
+    <div class="register-header">
+      <h1>Créer un compte ✨</h1>
+
+      <p>Rejoignez Ta3arof et faites de nouvelles rencontres.</p>
+    </div>
+
+    <!-- FORM -->
+
+    <form (ngSubmit)="register()">
+      <!-- USERNAME -->
+
+      <div class="form-group">
+        <label for="username"> Nom d'utilisateur </label>
+
+        <input
+          id="username"
+          type="text"
+          name="username"
+          [(ngModel)]="username"
+          placeholder="Votre nom"
+          required
+        />
+      </div>
+
+      <!-- EMAIL -->
+
+      <div class="form-group">
+        <label for="email"> Adresse email </label>
+
+        <input
+          id="email"
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="exemple@email.com"
+          required
+        />
+      </div>
+
+      <!-- PASSWORD -->
+
+      <div class="form-group">
+        <label for="password"> Mot de passe </label>
+
+        <input
+          id="password"
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Votre mot de passe"
+          required
+        />
+      </div>
+
+      <!-- AGE -->
+
+      <div class="form-group">
+        <label for="age"> Âge </label>
+
+        <input
+          id="age"
+          type="number"
+          name="age"
+          [(ngModel)]="age"
+          placeholder="30"
+          min="18"
+          required
+        />
+      </div>
+
+      <!-- CITY -->
+
+      <div class="form-group">
+        <label for="city"> Ville </label>
+
+        <input
+          id="city"
+          type="text"
+          name="city"
+          [(ngModel)]="city"
+          placeholder="Palencia"
+          required
+        />
+      </div>
+
+      <!-- GENDER -->
+
+      <div class="form-group">
+        <label for="gender"> Genre </label>
+
+        <select id="gender" name="gender" [(ngModel)]="gender" required>
+          <option value="">Sélectionnez</option>
+
+          <option value="homme">Homme</option>
+
+          <option value="femme">Femme</option>
+        </select>
+      </div>
+
+      <!-- DESCRIPTION -->
+
+      <div class="form-group">
+        <label for="description"> À propos de vous </label>
+
+        <textarea
+          id="description"
+          name="description"
+          [(ngModel)]="description"
+          placeholder="Présentez-vous en quelques mots..."
+          rows="3"
+        ></textarea>
+      </div>
+
+      <!-- ERROR -->
+
+      @if (errorMessage) {
+        <div class="error-message">
+          {{ errorMessage }}
+        </div>
+      }
+
+      <!-- SUCCESS -->
+
+      @if (successMessage) {
+        <div class="success-message">
+          {{ successMessage }}
+        </div>
+      }
+
+      <!-- BUTTON -->
+
+      <button type="submit" class="register-button">
+        Créer mon compte
+
+        <span>→</span>
+      </button>
+    </form>
+
+    <!-- FOOTER -->
+
+    <div class="register-footer">
+      <span>Vous avez déjà un compte ?</span>
+
+      <a routerLink="/login"> Se connecter </a>
+    </div>
+  </div>
+</div>
