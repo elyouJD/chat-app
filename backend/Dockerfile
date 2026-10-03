@@ -23,15 +23,14 @@ COPY . .
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
 
+RUN mkdir -p var/cache var/log public/uploads
+
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 
-RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' \
-    /etc/apache2/sites-available/000-default.conf \
-    /etc/apache2/apache2.conf \
-   
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
+    /etc/apache2/sites-available/000-default.conf
 
-RUN mkdir -p /var/www/html/var /var/www/html/public/uploads \
-    && chown -R www-data:www-data /var/www/html/var /var/www/html/public/uploads
+RUN chown -R www-data:www-data /var/www/html/var /var/www/html/public
 
 EXPOSE 80
 
