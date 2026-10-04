@@ -18,7 +18,7 @@ class RegisterController
         EntityManagerInterface $entityManager
     ): JsonResponse {
 
-        $data = json_decode($request->getContent(), true);
+        $data = $request->toArray();
 
         $user = new User();
 
@@ -30,7 +30,6 @@ class RegisterController
         $user->setPhoto($data['photo'] ?? null);
         $user->setDescription($data['description'] ?? null);
 
-        // Hash password
         $hashedPassword = $passwordHasher->hashPassword(
             $user,
             $data['password']
