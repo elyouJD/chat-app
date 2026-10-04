@@ -24,3 +24,9 @@
 ###< lexik/jwt-authentication-bundle ###
 
 /openssl.cnf
+
+.env
+.env.dev
+.env.test
+login.json
+register.json

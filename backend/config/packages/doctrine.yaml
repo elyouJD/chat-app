@@ -33,7 +33,7 @@ when@prod:
     doctrine:
         dbal:
             options:
-                !php/const PDO::MYSQL_ATTR_SSL_CA: "/etc/ssl/certs/tidb-ca.pem"
+                !php/const PDO::MYSQL_ATTR_SSL_CA: "%env(resolve:TIDB_SSL_CA)%"
 
         orm:
             auto_generate_proxy_classes: false
