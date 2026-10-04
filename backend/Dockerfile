@@ -21,7 +21,8 @@ WORKDIR /var/www/html
 
 COPY . .
 
-# Symfony needs the .env file to exist
+COPY certs/ca.pem /etc/ssl/certs/tidb-ca.pem
+
 RUN touch .env
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
@@ -33,9 +34,13 @@ ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
     /etc/apache2/sites-available/000-default.conf
 
-RUN chown -R www-data:www-data /var/www/html/var /var/www/html/public
+RUN printf '<Directory /var/www/html/public>\n\
+    AllowOverride All\n\
+    Require all granted\n\
+</Directory>\n' > /etc/apache2/conf-available/symfony.conf \
+    && a2enconf symfony
 
-RUN touch /var/www/html/.env
+RUN chown -R www-data:www-data /var/www/html/var /var/www/html/public
 
 EXPOSE 80
 
