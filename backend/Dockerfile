@@ -16,7 +16,7 @@ RUN apt-get update \
     && a2enmod rewrite \
     && rm -rf /var/lib/apt/lists/*
 
-RUN usermod -a -G 1000 www-data
+RUN groupadd -g 1000 render && usermod -a -G render www-data
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
