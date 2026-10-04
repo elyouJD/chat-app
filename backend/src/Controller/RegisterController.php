@@ -24,7 +24,17 @@ class RegisterController
 
         $user->setUsername($data['username']);
         $user->setEmail($data['email']);
-        $user->setAge($data['age']);
+
+        // Vérifier que l'âge existe
+        if (!isset($data['age']) || $data['age'] === '') {
+            return new JsonResponse([
+                'error' => 'La edad es obligatoria'
+            ], 400);
+        }
+
+        // Convertir l'âge en entier
+        $user->setAge((int) $data['age']);
+
         $user->setCity($data['city']);
         $user->setGender($data['gender']);
         $user->setPhoto($data['photo'] ?? null);
