@@ -12,7 +12,7 @@ interface LoginResponse {
 export class Auth {
   private http = inject(HttpClient);
 
-  private apiUrl = 'http://127.0.0.1:8000/api';
+  private apiUrl = 'https://chat-app-backend-m1o3.onrender.com/api';
 
   login(email: string, password: string): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.apiUrl}/login`, {

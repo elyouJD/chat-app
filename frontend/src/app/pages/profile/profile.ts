@@ -112,7 +112,7 @@ export class Profile implements OnInit {
     }
 
     // إذا كان /uploads/...
-    this.photoUrl = `http://127.0.0.1:8000${photo}`;
+    this.photoUrl = `https://chat-app-backend-m1o3.onrender.com${photo}`;
   }
 
   // حفظ البروفايل

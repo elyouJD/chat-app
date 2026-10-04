@@ -212,7 +212,7 @@ export class Chat implements OnInit, AfterViewChecked {
       return;
     }
 
-    this.otherPhoto = `http://127.0.0.1:8000${photo}`;
+    this.otherPhoto = `https://chat-app-backend-m1o3.onrender.com${photo}`;
   }
 
   // =========================================================
@@ -416,7 +416,7 @@ export class Chat implements OnInit, AfterViewChecked {
       return mediaUrl;
     }
 
-    return `http://127.0.0.1:8000${mediaUrl}`;
+    return `https://chat-app-backend-m1o3.onrender.com${mediaUrl}`;
   }
 
   // =========================================================
@@ -470,6 +470,7 @@ export class Chat implements OnInit, AfterViewChecked {
     y = Math.max(margin, y);
 
     this.contextMenuX = x;
+
     this.contextMenuY = y;
 
     this.contextMenuVisible = true;
