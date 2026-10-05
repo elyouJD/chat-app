@@ -3,10 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class Auth {
-
   private apiUrl = 'https://chat-app-backend-m1o3.onrender.com/api';
 
   constructor(private http: HttpClient) {}
@@ -15,18 +14,18 @@ export class Auth {
   // LOGIN
   // =========================
   login(email: string, password: string): Observable<any> {
-
     return this.http.post<any>(
       `${this.apiUrl}/login`,
       {
         email: email,
-        password: password
+        password: password,
       },
       {
         headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        })
-      }
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        }),
+      },
     );
   }
 
@@ -34,16 +33,12 @@ export class Auth {
   // REGISTER
   // =========================
   register(user: any): Observable<any> {
-
-    return this.http.post<any>(
-      `${this.apiUrl}/register`,
-      user,
-      {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        })
-      }
-    );
+    return this.http.post<any>(`${this.apiUrl}/register`, user, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      }),
+    });
   }
 
   // =========================
@@ -57,12 +52,12 @@ export class Auth {
   // AUTH HEADERS
   // =========================
   private getAuthHeaders(): HttpHeaders {
-
     const token = this.getToken();
 
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      Accept: 'application/ld+json',
+      Authorization: `Bearer ${token}`,
     });
   }
 
@@ -70,75 +65,53 @@ export class Auth {
   // GET USERS
   // =========================
   getUsers(): Observable<any> {
-
-    return this.http.get<any>(
-      `${this.apiUrl}/users`,
-      {
-        headers: this.getAuthHeaders()
-      }
-    );
+    return this.http.get<any>(`${this.apiUrl}/users`, {
+      headers: this.getAuthHeaders(),
+    });
   }
 
   // =========================
   // GET ME
   // =========================
   getMe(): Observable<any> {
-
-    return this.http.get<any>(
-      `${this.apiUrl}/me`,
-      {
-        headers: this.getAuthHeaders()
-      }
-    );
+    return this.http.get<any>(`${this.apiUrl}/me`, {
+      headers: this.getAuthHeaders(),
+    });
   }
 
   // =========================
   // GET USER
   // =========================
   getUser(id: number): Observable<any> {
-
-    return this.http.get<any>(
-      `${this.apiUrl}/users/${id}`,
-      {
-        headers: this.getAuthHeaders()
-      }
-    );
+    return this.http.get<any>(`${this.apiUrl}/users/${id}`, {
+      headers: this.getAuthHeaders(),
+    });
   }
 
   // =========================
   // UPDATE PROFILE
   // =========================
   updateMe(data: any): Observable<any> {
-
-    return this.http.put<any>(
-      `${this.apiUrl}/me`,
-      data,
-      {
-        headers: this.getAuthHeaders()
-      }
-    );
+    return this.http.put<any>(`${this.apiUrl}/me`, data, {
+      headers: this.getAuthHeaders(),
+    });
   }
 
   // =========================
   // UPLOAD PHOTO
   // =========================
   uploadPhoto(file: File): Observable<any> {
-
     const formData = new FormData();
 
     formData.append('photo', file);
 
     const token = this.getToken();
 
-    return this.http.post<any>(
-      `${this.apiUrl}/upload`,
-      formData,
-      {
-        headers: new HttpHeaders({
-          'Authorization': `Bearer ${token}`
-        })
-      }
-    );
+    return this.http.post<any>(`${this.apiUrl}/upload`, formData, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    });
   }
 
   // =========================
@@ -149,7 +122,7 @@ export class Auth {
   }
 
   // =========================
-  // IS LOGGED
+  // IS LOGGED IN
   // =========================
   isLoggedIn(): boolean {
     return !!this.getToken();
